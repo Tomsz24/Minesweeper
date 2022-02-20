@@ -2,8 +2,8 @@ import { Cell } from './Cell.js';
 import { UI } from './UI.js';
 import { Counter } from "./Counter.js";
 import { Timer } from "./Timer.js";
-import {ResetButton} from "./ResetButton.js";
-import {Modal} from "./Modal.js";
+import { ResetButton } from "./ResetButton.js";
+import { Modal } from "./Modal.js";
 
 class Game extends UI {
   #config = {
@@ -103,10 +103,12 @@ class Game extends UI {
       this.#buttons.reset.changeEmotion('negative');
       this.#modal.setText();
       this.#modal.toggleModal();
-      return
+      return;
     }
 
-    this.#modal.infoText = `Congratulations!!! 🥳🥳🥳 You Won !!! 🥳🥳🥳`;
+    this.#modal.infoText = this.#timer.numberOfSeconds >= this.#timer.maxNumberOfSeconds ?
+      `Congratulations!!! 🥳🥳🥳 You Won !!! 🥳🥳🥳` :
+      `Congratulations!!! 🥳🥳🥳 You Won !!! 🥳🥳🥳 it took only ${this.#timer.numberOfSeconds} seconds 😁💪🏻`;
     this.#buttons.reset.changeEmotion('positive');
     this.#modal.setText();
     this.#modal.toggleModal();
