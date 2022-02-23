@@ -4,6 +4,7 @@ import { Counter } from "./Counter.js";
 import { Timer } from "./Timer.js";
 import { ResetButton } from "./ResetButton.js";
 import { Modal } from "./Modal.js";
+import { Form }  from "./Form.js";
 
 class Game extends UI {
   #config = {
@@ -27,6 +28,7 @@ class Game extends UI {
   #counter = new Counter();
   #timer = new Timer();
   #modal = new Modal();
+  #formWrapper = new Form();
 
   #numberOfRows = null;
   #numberOfCols = null;
@@ -45,6 +47,9 @@ class Game extends UI {
     normal: null,
     expert: null,
     reset: new ResetButton(),
+    custom: null,
+    close: null,
+    submit: null,
   }
 
   initializeGame() {
@@ -61,6 +66,9 @@ class Game extends UI {
     this.#buttons.easy = this.getElement(this.UiSelectors.easyButton);
     this.#buttons.normal = this.getElement(this.UiSelectors.normalButton);
     this.#buttons.expert = this.getElement(this.UiSelectors.expertButton);
+    this.#buttons.custom = this.getElement(this.UiSelectors.customButton);
+    this.#buttons.close = this.getElement(this.UiSelectors.closeButton);
+    this.#buttons.submit = this.getElement(this.UiSelectors.formButton);
   }
 
   #newGame(
@@ -144,6 +152,15 @@ class Game extends UI {
     this.#buttons.modal.addEventListener('click', () => (
       this.#modal.toggleModal()
     ));
+    this.#buttons.custom.addEventListener('click', () => (
+      this.#formWrapper.toggleForm()
+    ));
+    this.#buttons.close.addEventListener('click', () => (
+      this.#formWrapper.toggleForm()
+    ));
+    this.#buttons.submit.addEventListener('click', () => (
+      this.#createCustomBoard()
+    ));
   }
 
   #handleNewGameClick(rows = this.#numberOfRows, cols = this.#numberOfCols, mines = this.#numberOfMines) {
@@ -151,6 +168,17 @@ class Game extends UI {
     this.#newGame(rows, cols, mines)
   }
 
+  #createCustomBoard() {
+    if(this.#formWrapper.validateForm()) {
+      const {inputRows, inputCols, inputMines} = this.#formWrapper;
+      this.#handleNewGameClick(
+        parseFloat(inputRows.value),
+        parseFloat(inputCols.value),
+        parseFloat(inputMines.value),
+        );
+      this.#formWrapper.toggleForm();
+    }
+  }
 
   #setStyles() {
     document.documentElement.style.setProperty('--cells-in-row', this.#numberOfCols);

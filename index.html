@@ -30,6 +30,7 @@
       <button class="button" data-button-easy>easy</button>
       <button class="button" data-button-normal>normal</button>
       <button class="button" data-button-expert>hard</button>
+      <button class="button" data-button-custom>custom</button>
     </section>
   </article>
 
@@ -39,6 +40,28 @@
       <button class="modal__button" data-modal-button>Play again!</button>
     </section>
   </article>
+
+  <div class="playerForm hide" data-form-wrapper>
+    <div class="form-wrapper">
+      <div class="close-button-wrapper">
+        <button data-close-form-button>x</button>
+      </div>
+      <form class="form">
+        <label>Number of rows</label>
+        <input type="number" placeholder="Enter a number" data-input-rows>
+        <label>Number of columns</label>
+        <input type="number" placeholder="Enter a number" data-input-cols>
+        <label>Number of mines</label>
+        <input type="number" placeholder="Enter a number" data-input-mines>
+      </form>
+      <div class="form-info hide" data-error>
+        <span>Provide number between 1 to 99</span>
+      </div>
+      <div class="submit-button">
+        <button data-form-button>Create</button>
+      </div>
+    </div>
+  </div>
 </main>
 
 <script src="js/Game.js" type="module"></script>

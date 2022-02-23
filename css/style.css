@@ -237,3 +237,67 @@ html {
     background-image: url("../assets/bomb.svg");
     background-color: var(--alarm-color);
 }
+
+.playerForm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--modal-background);
+}
+
+.form-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    border-radius: 5px;
+    padding: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.close-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-button-wrapper button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button button {
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+.submit-button button:hover {
+    background-color: var(--primary-color--dark);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    border-color: #F80000;
+}
+
+.form-info {
+    color: #F80000;
+}
+
