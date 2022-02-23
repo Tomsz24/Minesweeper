@@ -119,8 +119,9 @@ html {
 }
 
 .modal__content {
-    width: 50vw;
-    height: 50vh;
+    padding: 10px;
+    min-width: 50vw;
+    min-height: 50vh;
     background-color: var(--white);
     display: flex;
     flex-direction: column;
@@ -132,6 +133,7 @@ html {
 .modal__text {
     font-size: 4.8rem;
     text-align: center;
+    padding: 10px 20px;
 }
 
 .modal__button {
@@ -299,5 +301,20 @@ html {
 
 .form-info {
     color: #F80000;
+    font-size: 16px;
+}
+
+.label {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label label {
+    font-size: 20px;
+}
+
+.label input {
+    font-size: 24px;
 }
 
